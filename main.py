@@ -11,10 +11,21 @@ import gc
 import torch
 import itertools
 
+# ######################### Hyperparameters
+# Input of these settings via terminal
+# parser = argparse.ArgumentParser()
+# parser.add_argument('--epochs', type=int, default=20, metavar='N',
+#                     help='number of epochs to train (default: 20)')
+# parser.add_argument('--lr', type=float, default=0.001, metavar='LR',
+#                     help='learning rate (default: 0.01)')
+# args = parser.parse_args()
+
+#########################
+
 # preprocessing parameters
-input_path = Path("data/all/png")
-output_path = Path("data/all/output")
-name_csv = 'data/all/data_preprocessing_all_x10_1vs23'
+input_path = Path("")
+output_path = Path("")
+name_csv = ''
 train_test_split = 1
 
 # define image dye type. normal="normal", kongo-red="fluorescent"
@@ -82,7 +93,14 @@ model.initialize()
 model.train(train_dl)
 
 # Test Model
-pred = model.test(test_dl, full_output=True)
+# pred = model.test(test_dl, full_output=True)
+
+# Confidence plot
+#import numpy as np
+# confidence output
+#show_confidence_plot(pred[:, -2], pred[:, -1], pred[:, -3], bins=10)
+# temp scaled confidence
+#show_confidence_plot(pred[:, -2], pred[:, -1], np.choose(pred[:, -2].astype(int), (pred[:, 0], pred[:, 1])), bins=5)
 
 # Save Data
 comment = f"Test 1st class vs classes 2&3 with both batches and bags_per_class={bags_per_class} " \

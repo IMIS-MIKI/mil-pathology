@@ -3,9 +3,9 @@ import os
 import shutil
 import cv2
 
-ndpi_folder = "data/full_sets/ndpi"
-tiff_folder = "data/full_sets/tiff"
-png_folder = "data/full_sets/png"
+ndpi_folder = "C:/Users/Mario Macedo/Documents/PATHO_IMG/full_sets/ndpi"
+tiff_folder = "C:/Users/Mario Macedo/Documents/PATHO_IMG/full_sets/tiff"
+png_folder = "C:/Users/Mario Macedo/Documents/PATHO_IMG/full_sets/png"
 
 resolution = 10  # [40, 10, 2.5, 0.625] <- Resolutions available -
 # If the image is too big instead it is sampled with [20, 5, 1.25]

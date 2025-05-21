@@ -11,9 +11,9 @@ import torch
 import itertools
 
 # preprocessing parameters
-input_path = Path("data/all/png")
-output_path = Path("data/all/output")
-name_csv = 'data/all/data_preprocessing_all_x10_1vs23'
+input_path = Path("")
+output_path = Path("")
+name_csv = ''
 train_test_split = 0.8
 
 # define image dye type. normal="normal", kongo-red="fluorescent"
@@ -21,17 +21,16 @@ image_type = "fluorescent"
 normalize_globally = True  # with training set statistics
 save_model = True
 
-num_epochs = 50
-batch_size = 5
-learning_rate = 0.00001
-loss_function = "CrossEntropyLoss"
 
 ###### Parameters to evaluate ######
-
-list_bags_per_class = [1000, 2500, 5000, 10000, 20000]
-list_slices_per_bag = [10, 15, 20, 25]
-list_perc_background = [0.3, 0.4, 0.5, 0.6, 0.7]
-list_bag_model_middle = ["Mean", "Max", "MinMax"]
+list_bags_per_class = [5000, 10000, 20000]
+list_slices_per_bag = [15, 25]
+list_num_epochs = [50]  # args.epochs ...
+list_batch_size = [5]
+list_learning_rate = [0.00001]
+list_perc_background = [0.5]
+list_bag_model_middle = ["Mean", "Max"]
+list_loss_function = ["CrossEntropyLoss"]
 
 ##########################
 
@@ -103,13 +102,18 @@ def run_full_process(bags_per_class, slices_per_bag, num_epochs, batch_size, lea
 
 
 # Iterate over all combinations of parameters
-param_combinations = list(itertools.product(list_bags_per_class, list_slices_per_bag, list_perc_background,
-                                            list_bag_model_middle))
+param_combinations = list(itertools.product(list_bags_per_class, list_slices_per_bag, list_num_epochs, list_batch_size,
+                                            list_learning_rate, list_perc_background, list_bag_model_middle,
+                                            list_loss_function))
 
+count = 0
 for comb in param_combinations:
-
-    bags_per_class, slices_per_bag, perc_background, bag_model_middle = comb
-
+    if count < 1:
+        count = count + 1
+        continue
+    bags_per_class, slices_per_bag, num_epochs, batch_size, learning_rate, perc_background, bag_model_middle, \
+        loss_function = comb
+    # break
     print(comb)
     run_full_process(bags_per_class, slices_per_bag, num_epochs, batch_size, learning_rate, perc_background,
                      bag_model_middle, loss_function, save_model)

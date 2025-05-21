@@ -3,8 +3,8 @@ import os
 import shutil
 import cv2
 
-tif_folder = "data/Camelyon/tif/training"
-png_folder = "data/Camelyon/png/training"
+tif_folder = "/home/mario/Projects/ki-project1/data/Camelyon/tif/training"
+png_folder = "/home/mario/Projects/ki-project1/data/Camelyon/png/training"
 
 resolution = 10  # [40, 10, 2.5, 0.625] <- Resolutions available -
 # If the image is too big instead it is sampled with [20, 5, 1.25]

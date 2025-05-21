@@ -82,7 +82,7 @@ class Model:
         for epoch in range(self.epochs_trained, self.epochs_to_train):
             for i, (instance, ids, labels) in enumerate(data):
                 # forward pass BAGS to the model
-                with torch.cuda.amp.autocast():
+                with torch.cuda.amp.autocst():
                     predictions = self.bagModel((instance, ids))
                     loss = self.loss_function(predictions, labels)
                 # reset gradients model.zero_grad() and optimizer.zero_grad() are the same

@@ -13,9 +13,9 @@ import torch
 import itertools
 
 # preprocessing parameters
-input_path = Path("data/TC1/png")
-output_path = Path("data/TC1/output")
-name_csv = 'data/TC1/png/data_preprocessing_all_x10_1vs23'
+input_path = Path("")
+output_path = Path("")
+name_csv = ''
 
 # define image dye type. normal="normal", kongo-red="fluorescent"
 image_type = "fluorescent"
@@ -98,4 +98,4 @@ for _, row in df_predict[["image"]].drop_duplicates().iterrows():
 
 df_predict_final = pd.DataFrame(res, columns=["image", "count_0", "count_1", "type"])
 
-df_predict_final.to_csv(Path("data/TC1/png/intermediate_65_result_TC1.csv"))
+df_predict_final.to_csv(Path(""))

@@ -6,13 +6,14 @@ from utils.modelinstance import ModelInstance
 from utils.modelgovernance import ModelGovernance
 from pathlib import Path
 import gc
+# import argparse
 import torch
-import numpy as np
+import itertools
 
 # preprocessing parameters
-input_path = Path("data/all/png")
-output_path = Path("data/all/output")
-name_csv = 'data/all/data_preprocessing_all_x10_1vs23'
+input_path = Path("")
+output_path = Path("")
+name_csv = ''
 train_test_split = 0.999
 
 # define image dye type. normal="normal", kongo-red="fluorescent"
@@ -78,6 +79,7 @@ model.initialize()
 # Train model
 model.train(train_dl)
 
+import numpy as np
 model.confusion_matrix = np.array(0)
 
 # Save Data

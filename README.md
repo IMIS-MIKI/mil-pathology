@@ -1,2 +1,2 @@
-# MIL-Pathology
+# KI-Project1
 
